@@ -1226,21 +1226,40 @@ function preloadNext() {
 
 
 /* ===== BUY POPUP LOGIC (FIXED) ===== */
+/* ===== BUY POPUP LOGIC (DELAY + OUTSIDE CLICK) ===== */
 document.addEventListener('DOMContentLoaded', () => {
   const popupOverlay = document.getElementById('buyPopupOverlay');
   const closePopupBtn = document.getElementById('closePopup');
+  const popupBox = document.getElementById('buyPopup');
 
-  if (!popupOverlay || !closePopupBtn) return;
+  if (!popupOverlay || !closePopupBtn || !popupBox) return;
 
+  // Hide initially
+  popupOverlay.style.display = 'none';
+
+  // Show after 3 seconds
+  setTimeout(() => {
+    popupOverlay.style.display = 'flex';
+  }, 3000);
+
+  // Close via button
   closePopupBtn.addEventListener('click', () => {
     popupOverlay.style.display = 'none';
   });
 
-  // auto-close after 8 seconds
+  // Close when clicking outside popup box
+  popupOverlay.addEventListener('click', (e) => {
+    if (!popupBox.contains(e.target)) {
+      popupOverlay.style.display = 'none';
+    }
+  });
+
+  // Optional auto-close after 8 seconds (after it appears)
   setTimeout(() => {
     popupOverlay.style.display = 'none';
-  }, 8000);
+  }, 14000); // 3s delay + 8s visible
 });
+
 
 
 
