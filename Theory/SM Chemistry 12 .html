@@ -20,7 +20,13 @@ body { display:flex; height:100vh; overflow:hidden; }
   flex:1;
   background: url("https://i.ibb.co/RTjxjG88/class12.jpg") no-repeat center center;
   background-size: cover;
-  overflow-y:auto !important;
+  
+  
+  
+  overflow-y:auto;
+  
+  
+  
   overflow-x:hidden;
   position:relative;
   display:flex;
@@ -45,7 +51,7 @@ body { display:flex; height:100vh; overflow:hidden; }
 #sidebar h2{font-size:20px;margin-bottom:10px;color:#38bdf8}
 .chapter{margin-bottom:10px;background:#334155;padding:10px;border-radius:8px;cursor:pointer}
 .subList{display:none;padding:10px;background:#475569;margin-top:5px;border-radius:6px}
-.subList div{Padding:6px;background:#64748b;margin:5px 0;border-radius:6px;cursor:pointer}
+.subList div{padding:6px;background:#64748b;margin:5px 0;border-radius:6px;cursor:pointer}
 .subList div:hover{background:#94a3b8}
 
 /* IMAGE / PDF WRAPPER */
@@ -192,6 +198,93 @@ body { display:flex; height:100vh; overflow:hidden; }
   to{ transform:scale(1); opacity:1 }
 }
 
+	
+	
+	
+#viewer {
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+}
+
+#contentImg{
+  will-change: transform;
+  backface-visibility: hidden;
+  touch-action: pinch-zoom;
+}
+
+
+	#bookmarkBtn.active{
+  background: gold;
+  color: black;
+}
+	
+.chapterInfo{
+    font-size:10px;
+    margin-top:3px;
+    line-height:1.2;
+}
+
+.chapterInfo .syllabus{
+    color:#ffff00;   /* bright yellow */
+    font-weight:bold;
+    display:block;
+}
+
+.chapterInfo .subject{
+    color:#ff3030;   /* bright red */
+    font-weight:bold;
+    display:block;
+}	
+	
+.subject-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  width:100%;
+}
+
+.subject-buttons button{
+  padding:9px;
+  font-size:10px;
+  border:none;
+  border-radius:4px;
+  color:white;
+  cursor:pointer;
+}
+	
+/* Math-1 */
+.Chemistry-1{
+  background:#e74c3c;
+}
+.Chemistry-1:hover{
+  background:#c0392b;
+}
+
+/* Chemistry-1 */
+.Chemistry-2{
+  background:#27ae60;
+}
+.Chemistry-2:hover{
+  background:#1e8449;
+}
+
+/* Physics */
+.physics{
+  background:#3498db;
+}
+.physics:hover{
+  background:#21618c;
+}
+
+/* Environment */
+.environment{
+  background:#f39c12;
+}
+.environment:hover{
+  background:#d68910;
+}	
 
 
 
@@ -220,11 +313,6 @@ body { display:flex; height:100vh; overflow:hidden; }
   from { transform: translateX(100%); }
   to { transform: translateX(-100%); }
 }
-
-
-
-
-	
 	
 </style>
 </head>
@@ -235,15 +323,26 @@ body { display:flex; height:100vh; overflow:hidden; }
 
 <div id="sidebar" role="navigation" aria-label="Chapters">
 
-  <!-- ★★ ADDED BUTTON HERE ★★ -->
+    <!-- ★★ ADDED BUTTON HERE ★★ -->
 <a href="https://smchemistry12-afk.github.io/SM-Ans-Srote-html/store/chemistry 12 store.html" 
    class="buyBtn" target="_blank">BUY HARD COPY</a>
+   
+<div class="subject-buttons">
+  <button class="Chemistry-1" onclick="showClass('Chemistry-1')">Chemistry-1</button>
+  <button class="Chemistry-2" onclick="showClass('Chemistry-2')">Chemistry-2</button>
+
+</div>
 
 <h2>Chapters</h2>
+<div id="Chemistry-1">
 
 <div class="chapter">Chapter 1 SOLUTIONS
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-1</span>
+</div>
     <div class="subList">
-        <div onclick="loadSub('C1_T1')">TOPPER’S SPECIAL NOTES</div>
+        <div onclick="loadSub('C121_T121')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C1_Q1')">SUBJECTIVE QUESTION WITH SOLUTION</div>
         <div onclick="loadSub('C1_N1')">NCERT</div>
         <div onclick="loadSub('C1_A1')">NCERT SOLUTION</div>
@@ -251,6 +350,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 2 ELECTROCHEMISTRY
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-1</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C2_T2')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C2_Q2')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -260,6 +363,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 3 CHEMICAL KINETICS
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-1</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C3_T3')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C3_Q3')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -269,6 +376,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 4 SURFACE CHEMISTRY
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-1</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C4_T4')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C4_Q4')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -278,6 +389,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 5 THE p-BLOCK ELEMENTS (Groups 15–18)
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-1</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C5_T5')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C5_Q5')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -287,6 +402,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 6 d- AND f-BLOCK ELEMENTS
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-1</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C6_T6')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C6_Q6')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -296,6 +415,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 7 COORDINATION COMPOUNDS
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-1</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C7_T7')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C7_Q7')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -304,7 +427,17 @@ body { display:flex; height:100vh; overflow:hidden; }
     </div>
 </div>
 
+</div>
+
+
+<!-- ================= CHEMISTRY-2 ================= -->
+<div id="Chemistry-2" style="display:none;">
+
 <div class="chapter">Chapter 8 HALOALKANES AND HALOARENES
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-2</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C8_T8')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C8_Q8')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -314,6 +447,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 9 ALCOHOLS, PHENOLS AND ETHERS
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-2</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C9_T9')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C9_Q9')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -323,6 +460,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 10 ALDEHYDES, KETONES AND CARBOXYLIC ACIDS
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-2</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C10_T10')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C10_Q10')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -332,6 +473,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 11 AMINES
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-2</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C11_T11')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C11_Q11')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -341,6 +486,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 12 BIOMOLECULES
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Both CBSE & SEBA</span>
+<span class="subject">Chemistry-2</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C12_T12')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C12_Q12')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -350,6 +499,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 13 POLYMERS
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Not in Syllabus</span>
+<span class="subject">Chemistry-2</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C13_T13')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C13_Q13')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -359,6 +512,10 @@ body { display:flex; height:100vh; overflow:hidden; }
 </div>
 
 <div class="chapter">Chapter 14 CHEMISTRY IN EVERYDAY LIFE
+<div class="chapterInfo">
+<span class="syllabus">Class 12 + Not in Syllabus</span>
+<span class="subject">Chemistry-2</span>
+</div>
     <div class="subList">
         <div onclick="loadSub('C14_T14')">TOPPER’S SPECIAL NOTES</div>
         <div onclick="loadSub('C14_Q14')">SUBJECTIVE QUESTION WITH SOLUTION</div>
@@ -367,10 +524,11 @@ body { display:flex; height:100vh; overflow:hidden; }
     </div>
 </div>
 </div>
+</div> <!-- CLOSE SIDEBAR -->
 
 <div id="viewer" role="main" aria-label="Document viewer">
 
-	
+
 
 
 
@@ -397,7 +555,7 @@ body { display:flex; height:100vh; overflow:hidden; }
 
 
 
-
+	
   <div id="imgWrapper">
     <img id="contentImg" src="" alt="Page" decoding="async" loading="eager">
 
@@ -410,19 +568,25 @@ body { display:flex; height:100vh; overflow:hidden; }
   <button class="btn" id="prevBtn" aria-label="Previous">◀</button>
   <input type="number" id="pageInput" aria-label="Page number">
   <button class="btn" id="nextBtn" aria-label="Next">▶</button>
+  <button class="btn" id="bookmarkBtn">🔖</button>
+  <button class="btn" onclick="showBookmarks()">📑</button>
+  	 <button class="btn" id="solutionBtn" style="display:none;" 
+onclick="window.open('https://ai-question-and-its-solution-3oip.onrender.com')">🧠</button>
   <button class="btn" id="zoomIn" aria-label="Zoom in">⊕</button>
   <button class="btn" id="zoomOut" aria-label="Zoom out">⊖</button>
      <button class="btn" id="homeBtn" onclick="window.open('https://gten-educational-platform.github.io/Class-12/class 12 button.html')">🏠</button>
+
 </div>
 
 <script>
-
 /* ================= PDF.js worker ================= */
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
 /* ================= DATA (preserved) ================= */
+
+
 let data = {
-	  "C1_T1":[
+	  "C121_T121":[
   "https://chemistry-g10ep.github.io/SM-Solution-/SOLUTIONS-2025_page-0001.jpg",
   "https://chemistry-g10ep.github.io/SM-Solution-/SOLUTIONS-2025_page-0002.jpg",
   "https://chemistry-g10ep.github.io/SM-Solution-/SOLUTIONS-2025_page-0003.jpg",
@@ -821,8 +985,13 @@ let data = {
 	
 	
 	};
+
+
+
+
 /* ================= STATE VARS ================= */
 let currentList = [], index = 0;
+let currentCode = "";   // ⭐ ADD THIS LINE
 let zoomLevel = 1, autoScale = 1;
 let img = document.getElementById('contentImg');
 let viewer = document.getElementById('viewer');
@@ -863,10 +1032,25 @@ menuBtn.addEventListener('click', () => {
 
 /* ============== LOAD SUBLIST ============== */
 function loadSub(code){
+ currentCode = code;
+
+ // ⭐ SHOW SOLUTION BUTTON ONLY FOR CX_QX
+ const solutionBtn = document.getElementById("solutionBtn");
+ if(code.includes("_Q")){
+     solutionBtn.style.display = "inline-block";
+ }else{
+     solutionBtn.style.display = "none";
+ }
+ 
   currentList = data[code] || [];
   preloadFirst(currentList);   // ← new line
 
   index = 0;
+  // Restore last page if saved
+let savedPage = localStorage.getItem("page_" + code);
+if(savedPage){
+  index = parseInt(savedPage);
+}
   imgX = imgY = 0;
 
   exitPDF();
@@ -875,6 +1059,59 @@ function loadSub(code){
   controls.style.display = 'flex';
   if (window.innerWidth <= 1180) sidebar.classList.remove('open');
 }
+
+
+
+
+
+
+
+
+
+
+function loadSub(code){
+  currentCode = code;
+
+  // Show solution button only for _Q
+  const solutionBtn = document.getElementById("solutionBtn");
+  if(code.includes("_Q")){
+    solutionBtn.style.display = "inline-block";
+  } else {
+    solutionBtn.style.display = "none";
+  }
+
+  currentList = data[code] || [];
+  preloadFirst(currentList);
+
+  index = 0;
+
+  // Restore last page if saved
+  let savedPage = localStorage.getItem("page_" + code);
+  if(savedPage){
+    index = parseInt(savedPage);
+  }
+
+  imgX = imgY = 0;
+
+  exitPDF();
+  loadPage(true); // ⭐ Load the page first
+
+  controls.style.display = 'flex';
+  if (window.innerWidth <= 1180) sidebar.classList.remove('open');
+
+  // ⭐ Show popup AFTER page loads (non-blocking)
+  if(code.includes("_Q")){
+    setTimeout(() => {
+      alert("Click the brain icon 🧠 to open the solution finder.\n\nEnter your question code or type your question to get the solution instantly.");
+    }, 200); // 200ms delay is enough for page to render
+  }
+}
+
+
+
+
+
+
 
 
 
@@ -897,6 +1134,7 @@ function preloadFirst(list){
 /* ============== LOAD PAGE (IMAGE or PDF) ============== */
 function loadPage(first=false){
   let url = currentList[index];
+   localStorage.setItem("page_" + currentCode, index); // ⭐ SAVE PAGE
   if(!url) return;
   if(url.toLowerCase().endsWith('.pdf')) { enterPDF(url); return; }
 
@@ -940,9 +1178,24 @@ if (!isDesktop && w >= 900 && w < 1200 && w > h) {
   // in case onload doesn't fire or is cached, still update
   pageNum.textContent = `Page ${index+1} / ${currentList.length}`;
   pageInput.value = index+1;
+  updateBookmarkIcon();   // ⭐ update bookmark highlight
   preloadNext();
 
 }
+function updateBookmarkIcon(){
+
+ let key = "bookmark_" + currentCode;
+
+ let bookmarks = JSON.parse(localStorage.getItem(key)) || [];
+
+ if(bookmarks && bookmarks.includes(index)){
+   bookmarkBtn.classList.add("active");
+ }else{
+   bookmarkBtn.classList.remove("active");
+ }
+
+}
+
 
 /* ============== CLAMP UTILITY ============== */
 function clamp(value, min, max){ return Math.min(Math.max(value, min), max); }
@@ -950,18 +1203,56 @@ function clamp(value, min, max){ return Math.min(Math.max(value, min), max); }
 /* ============== NAVIGATION ============== */
 nextBtn.addEventListener('click', ()=> {
   if(pdfMode.active){
-    if(pdfMode.page < pdfMode.total){ pdfMode.page++; renderPDFPage(); return; }
-    else { exitPDF(); if(index < currentList.length-1){ index++; imgX = imgY = 0; loadPage(true); } return; }
+    if(pdfMode.page < pdfMode.total){ 
+      pdfMode.page++; 
+      renderPDFPage();
+      viewer.scrollTop = 0;   // ADD THIS
+      return; 
+    }
+    else { 
+      exitPDF(); 
+      if(index < currentList.length-1){ 
+        index++; 
+        imgX = imgY = 0; 
+        loadPage(true); 
+        viewer.scrollTop = 0;   // ADD THIS
+      } 
+      return; 
+    }
   }
-  if(index < currentList.length-1){ index++; imgX = imgY = 0; loadPage(true); }
+  if(index < currentList.length-1){ 
+    index++; 
+    imgX = imgY = 0; 
+    loadPage(true); 
+    viewer.scrollTop = 0;   // ADD THIS
+  }
 });
 
 prevBtn.addEventListener('click', ()=> {
   if(pdfMode.active){
-    if(pdfMode.page > 1){ pdfMode.page--; renderPDFPage(); return; }
-    else { exitPDF(); if(index > 0){ index--; imgX = imgY = 0; loadPage(true); } return; }
+    if(pdfMode.page > 1){ 
+      pdfMode.page--; 
+      renderPDFPage();
+      viewer.scrollTop = 0;   // ADD THIS
+      return; 
+    }
+    else { 
+      exitPDF(); 
+      if(index > 0){ 
+        index--; 
+        imgX = imgY = 0; 
+        loadPage(true); 
+        viewer.scrollTop = 0;   // ADD THIS
+      } 
+      return; 
+    }
   }
-  if(index > 0){ index--; imgX = imgY = 0; loadPage(true); }
+  if(index > 0){ 
+    index--; 
+    imgX = imgY = 0; 
+    loadPage(true); 
+    viewer.scrollTop = 0;   // ADD THIS
+  }
 });
 
 pageInput.addEventListener('input', ()=> {
@@ -1011,7 +1302,8 @@ viewer.addEventListener('touchstart', e => {
         if(canvas){ pdfX = parseFloat(canvas.dataset.x||0); pdfY = parseFloat(canvas.dataset.y||0); canvas.style.pointerEvents = 'auto'; }
       }
     } else {
-      drag = true; startX = e.touches[0].pageX; startY = e.touches[0].pageY; startImgX = imgX; startImgY = imgY;
+  drag = zoomLevel > autoScale + 0.01;
+ startX = e.touches[0].pageX; startY = e.touches[0].pageY; startImgX = imgX; startImgY = imgY;
     }
   } else if(e.touches.length === 2){
     lastDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
@@ -1023,8 +1315,35 @@ viewer.addEventListener('touchstart', e => {
   }
 });
 
+
+
+
+
+
 viewer.addEventListener('touchmove', e => {
-  if(e.cancelable) e.preventDefault();
+
+  // ⭐ Always allow pinch zoom
+  if(e.touches.length === 2){
+    if(e.cancelable) e.preventDefault();
+  }
+
+  // ⭐ Allow normal scrolling when single finger & not zoomed
+  else if(!pdfMode.active && zoomLevel <= autoScale + 0.01){
+    return;
+  }
+
+  else if(pdfMode.active && Math.abs(pdfMode.scale - 1) < 0.01){
+    return;
+  }
+
+  else {
+    if(e.cancelable) e.preventDefault();
+  }
+
+
+  
+  
+  
   if(e.touches.length === 1){
     if(pdfMode.active && pdfDrag){
       const canvas = document.getElementById('pdfPage');
@@ -1063,9 +1382,23 @@ viewer.addEventListener('touchmove', e => {
       // ensure canvas receives pointer events when zoomed
       canvas.style.pointerEvents = 'auto';
     } else {
-      zoomLevel = Math.max(autoScale, Math.min(4, zoomLevel * zoomChange));
-      imgX = pinchStart.left + (pinchCenter.x * (zoomChange - 1));
-      imgY = pinchStart.top + (pinchCenter.y * (zoomChange - 1));
+	
+      let newZoom = Math.max(autoScale, Math.min(4, zoomLevel * zoomChange));
+
+// ⭐ Calculate pinch focus relative to image
+let dx = pinchCenter.x - imgX;
+let dy = pinchCenter.y - imgY;
+
+// ⭐ Adjust position so pinch stays fixed
+imgX -= dx * (newZoom / zoomLevel - 1);
+imgY -= dy * (newZoom / zoomLevel - 1);
+
+zoomLevel = newZoom;
+
+	  
+	  
+	  
+	  
       let vw = viewer.clientWidth, vh = viewer.clientHeight;
       let iw = img.naturalWidth * zoomLevel, ih = img.naturalHeight * zoomLevel;
       imgX = clamp(imgX, Math.min(0, vw - iw), 0); imgY = clamp(imgY, Math.min(0, vh - ih), 0);
@@ -1246,6 +1579,85 @@ function preloadNext() {
 }
 
 
+
+
+
+
+
+function showClass(cls){
+
+  const subjects = ["Chemistry-1","Chemistry-2"];
+
+  subjects.forEach(id=>{
+    document.getElementById(id).style.display = "none";
+  });
+
+  document.getElementById(cls).style.display = "block";
+}
+
+
+
+
+
+
+
+function showBookmarks(){
+
+ if(!currentCode) return;
+
+ let key = "bookmark_" + currentCode;
+
+ let bookmarks = JSON.parse(localStorage.getItem(key)) || [];
+
+ if(bookmarks.length === 0){
+   alert("No bookmarks saved.");
+   return;
+ }
+
+ bookmarks.sort((a,b)=>a-b);
+
+ let popup = document.createElement("div");
+
+ popup.style.position = "fixed";
+ popup.style.top = "50%";
+ popup.style.left = "50%";
+ popup.style.transform = "translate(-50%,-50%)";
+ popup.style.background = "#222";
+ popup.style.color = "white";
+ popup.style.padding = "15px";
+ popup.style.borderRadius = "8px";
+ popup.style.zIndex = "9999";
+ popup.style.maxHeight = "300px";
+ popup.style.overflowY = "auto";
+
+ let html = "<h3>Bookmarks</h3>";
+
+ bookmarks.forEach(p=>{
+   html += `<div style="padding:5px;cursor:pointer" onclick="jumpToBookmark(${p})">Page ${p+1}</div>`;
+ });
+
+ html += `<div style="margin-top:10px;text-align:center">
+ <button onclick="this.parentElement.parentElement.remove()">Close</button>
+ </div>`;
+
+ popup.innerHTML = html;
+
+ document.body.appendChild(popup);
+
+}
+function jumpToBookmark(p){
+
+ index = p;
+
+ loadPage();
+
+ document.querySelectorAll("div").forEach(el=>{
+   if(el.style && el.style.zIndex === "9999"){
+     el.remove();
+   }
+ });
+
+}
 /* ===== BUY POPUP LOGIC (FIXED) ===== */
 /* ===== BUY POPUP LOGIC (DELAY + OUTSIDE CLICK) ===== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1282,7 +1694,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+let bookmarkBtn = document.getElementById("bookmarkBtn");
 
+bookmarkBtn.addEventListener("click", function(){
+
+ if(!currentCode) return;
+
+ let key = "bookmark_" + currentCode;
+
+ let bookmarks = JSON.parse(localStorage.getItem(key)) || [];
+
+ if(bookmarks.includes(index)){
+     bookmarks = bookmarks.filter(p => p !== index);
+     bookmarkBtn.classList.remove("active");
+ }else{
+     bookmarks.push(index);
+     bookmarkBtn.classList.add("active");
+ }
+
+ localStorage.setItem(key, JSON.stringify(bookmarks));
+});
 
 </script>
 <!-- ===== BUY HARD COPY POPUP ===== -->
