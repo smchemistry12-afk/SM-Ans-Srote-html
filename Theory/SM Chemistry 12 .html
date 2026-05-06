@@ -1225,34 +1225,6 @@ menuBtn.addEventListener('click', () => {
 });
 
 /* ============== LOAD SUBLIST ============== */
-function loadSub(code){
- currentCode = code;
-
- // ⭐ SHOW SOLUTION BUTTON ONLY FOR CX_QX
- const solutionBtn = document.getElementById("solutionBtn");
- if(code.includes("_Q")){
-     solutionBtn.style.display = "inline-block";
- }else{
-     solutionBtn.style.display = "none";
- }
- 
-  currentList = data[code] || [];
-  preloadFirst(currentList);   // ← new line
-
-  index = 0;
-  // Restore last page if saved
-let savedPage = localStorage.getItem("page_" + code);
-if(savedPage){
-  index = parseInt(savedPage);
-}
-  imgX = imgY = 0;
-
-  exitPDF();
-  loadPage(true);
-
-  controls.style.display = 'flex';
-  if (window.innerWidth <= 1180) sidebar.classList.remove('open');
-}
 
 
 function loadSub(code){
