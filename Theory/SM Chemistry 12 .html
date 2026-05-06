@@ -578,14 +578,6 @@ body { display:flex; height:100vh; overflow:hidden; }
 
 
 
-
-
-
-
-
-
-
-
 <div id="noticeBar">
   <div id="noticeText">
   Our website is currently under development. Study materials are being uploaded regularly. 
@@ -593,6 +585,26 @@ body { display:flex; height:100vh; overflow:hidden; }
   We will upload it on a priority basis.
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -647,6 +659,23 @@ body { display:flex; height:100vh; overflow:hidden; }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 <div id="pageNum">Page 1 / 1</div>
@@ -661,8 +690,45 @@ body { display:flex; height:100vh; overflow:hidden; }
 onclick="window.open('https://ai-question-and-its-solution-3oip.onrender.com')">🧠</button>
   <button class="btn" id="zoomIn" aria-label="Zoom in">⊕</button>
   <button class="btn" id="zoomOut" aria-label="Zoom out">⊖</button>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <button class="btn" id="penBtn">✏</button>
 <button class="btn" id="clearBtn">🗑</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      <button class="btn" id="homeBtn" onclick="window.open('https://gten-educational-platform.github.io/Class-12/class 12 button.html')">🏠</button>
 
 </div>
@@ -1189,14 +1255,6 @@ if(savedPage){
 }
 
 
-
-
-
-
-
-
-
-
 function loadSub(code){
   currentCode = code;
 
@@ -1234,16 +1292,6 @@ function loadSub(code){
     }, 200); // 200ms delay is enough for page to render
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1333,7 +1381,41 @@ if (!isDesktop && w >= 900 && w < 1200 && w > h) {
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   resizeDrawCanvas();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -1689,16 +1771,89 @@ function resetView(){
 /* ============== SWIPE FOR NAVIGATION ============== */
 /* Minimal change: swipeAllowed checks only zoom state (autoScale or pdf scale == 1).
    This enables swipe when unzoomed. We intentionally DO NOT check 'drag' here
+   
+   
+   
    because your current code sets drag at touchstart which previously blocked swipe. */
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 function swipeAllowed() {
-  // Images: allow swipe ONLY when zoomLevel equals autoScale
-  if(!pdfMode.active) {
+  // disable page swipe while pen is active
+  if (penMode) return false;
+
+  if (!pdfMode.active) {
     return Math.abs(zoomLevel - autoScale) < 0.001;
   }
-  // PDFs: allow swipe ONLY when pdfMode.scale equals 1
+
   return Math.abs(pdfMode.scale - 1) < 0.001;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 viewer.addEventListener("touchstart", function (e) {
   // If swipe isn't allowed due to zoom, bail early
@@ -2024,6 +2179,7 @@ window.addEventListener("mouseup", () => {
 drawCanvas.addEventListener("touchstart", e => {
   if(!penMode) return;
   e.preventDefault();
+  e.stopPropagation();
 
   const rect = drawCanvas.getBoundingClientRect();
   const t = e.touches[0];
@@ -2036,6 +2192,7 @@ drawCanvas.addEventListener("touchstart", e => {
 drawCanvas.addEventListener("touchmove", e => {
   if(!drawing || !penMode) return;
   e.preventDefault();
+  e.stopPropagation();
 
   const rect = drawCanvas.getBoundingClientRect();
   const t = e.touches[0];
@@ -2060,10 +2217,14 @@ drawCanvas.addEventListener("touchmove", e => {
   lastY = y;
 }, {passive:false});
 
-drawCanvas.addEventListener("touchend", () => {
+drawCanvas.addEventListener("touchend", e => {
+  if(!penMode) return;
+  e.preventDefault();
+  e.stopPropagation();
+
   drawing = false;
   drawCtx.beginPath();
-});
+}, {passive:false});
 
 
 
