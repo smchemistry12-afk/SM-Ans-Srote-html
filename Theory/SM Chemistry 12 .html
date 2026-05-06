@@ -317,20 +317,47 @@ body { display:flex; height:100vh; overflow:hidden; }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #drawCanvas{
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   z-index:1200;
   display:none;
   background:transparent;
   touch-action:none;
+  pointer-events:none;
+}
+#penBtn.active{
+  background: gold;
+  color: black;
 }
 
-#penBtn.active{
-  background:#22c55e;
-}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -571,16 +598,55 @@ body { display:flex; height:100vh; overflow:hidden; }
 
 
 
-<canvas id="drawCanvas"></canvas>
 
 
 
 
-	
-  <div id="imgWrapper">
-    <img id="contentImg" src="" alt="Page" decoding="async" loading="eager">
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="imgWrapper">
+  <img id="contentImg" src="" alt="Page" decoding="async" loading="eager">
+  <canvas id="drawCanvas"></canvas>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 <div id="pageNum">Page 1 / 1</div>
@@ -1236,6 +1302,62 @@ if (!isDesktop && w >= 900 && w < 1200 && w > h) {
   img.style.transform = `translate(${imgX}px,${imgY}px) scale(${zoomLevel})`;
     pageNum.textContent = `Page ${index+1} / ${currentList.length}`;
     pageInput.value = index+1;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  resizeDrawCanvas();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   };
   // in case onload doesn't fire or is cached, still update
   pageNum.textContent = `Page ${index+1} / ${currentList.length}`;
@@ -1787,6 +1909,27 @@ bookmarkBtn.addEventListener("click", function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ================= SMOOTH PEN ================= */
 
 const drawCanvas = document.getElementById("drawCanvas");
@@ -1801,16 +1944,24 @@ const penColor = "red";
 const penSize = 3;
 
 function resizeDrawCanvas(){
-  const rect = viewer.getBoundingClientRect();
   const ratio = window.devicePixelRatio || 1;
 
-  drawCanvas.width = rect.width * ratio;
-  drawCanvas.height = rect.height * ratio;
+  const w = img.naturalWidth || img.clientWidth;
+  const h = img.naturalHeight || img.clientHeight;
 
-  drawCanvas.style.width = rect.width + "px";
-  drawCanvas.style.height = rect.height + "px";
+  if(!w || !h) return;
 
-  drawCtx.setTransform(ratio,0,0,ratio,0,0);
+  drawCanvas.width = w * ratio;
+  drawCanvas.height = h * ratio;
+
+  drawCanvas.style.width = w + "px";
+  drawCanvas.style.height = h + "px";
+
+  drawCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+  const wrapper = document.getElementById("imgWrapper");
+  wrapper.style.width = w + "px";
+  wrapper.style.height = h + "px";
 }
 
 resizeDrawCanvas();
@@ -1913,6 +2064,30 @@ drawCanvas.addEventListener("touchend", () => {
   drawing = false;
   drawCtx.beginPath();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
